@@ -81,7 +81,13 @@ def standart_write(file_name, res):
         f_w.writerows(res)
 
 
+def copy_file(file_name, file_name1):
+    res = read_file(file_name)
+    standart_write(file_name1, res)
+
+
 file_name = 'phone.csv'
+file_name1 = 'phone1.csv'
 
 
 def main():
@@ -103,6 +109,13 @@ def main():
                 print('Файл не существует, создайте его')
                 continue
             remove_row(file_name)
+        elif command == 'c':
+            if not exists(file_name):
+                print('Файл не существует, создайте его')
+                continue
+            if not exists(file_name1):
+                create_file(file_name1)
+            copy_file(file_name, file_name1)
 
 
 main()
